@@ -12,7 +12,7 @@ Last run: 2026-11-24
 
 ## Automated end-to-end result
 
-**24 / 24 checks passed.**
+**26 / 26 checks passed.**
 
 | Area | Checks | Result |
 | --- | --- | --- |
@@ -23,6 +23,8 @@ Last run: 2026-11-24
 | Mobile menu | Opens with `aria-expanded="true"`; Escape closes it | PASS |
 | Copy email | Clipboard interaction confirms with “Copied” | PASS |
 | Case study | Six sections render; no overflow at 390px | PASS |
+| Security metadata | CSP and referrer policy present; code/table regions keyboard-focusable | PASS |
+| 404 page | Styled, accessible, and overflow-free | PASS |
 | Links | All local links return HTTP 200 | PASS |
 | Accessibility | Skip link, unique IDs, named buttons and links | PASS |
 | Keyboard | Skip link receives focus | PASS |

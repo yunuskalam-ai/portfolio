@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Yunus Kalam</title>
   <meta name="robots" content="noindex">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="theme-color" content="#f3f0e8">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -20,7 +22,8 @@
   </script>
 </head>
 <body>
-  <main class="error-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main class="error-page" id="main">
     <p class="eyebrow">Error / 404</p>
     <h1>This signal<br><em>dropped.</em></h1>
     <p>The page you’re looking for has moved or never existed.</p>

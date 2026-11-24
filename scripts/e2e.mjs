@@ -309,9 +309,41 @@ try {
   const caseOverflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
   record('Case study has no horizontal overflow at 390px', caseOverflow <= 1, `overflow=${caseOverflow}`);
 
-  const localLinks = await evaluate(`Array.from(new Set(Array.from(document.querySelectorAll('a[href]'))
+  const hardening = await evaluate(`(() => ({
+    csp: !!document.querySelector('meta[http-equiv="Content-Security-Policy"]'),
+    referrer: document.querySelector('meta[name="referrer"]')?.content || '',
+    codeRegions: Array.from(document.querySelectorAll('.code-block')).every((element) =>
+      element.getAttribute('tabindex') === '0' && element.getAttribute('role') === 'region'),
+    tableRegion: document.querySelector('.table-wrap')?.getAttribute('tabindex') === '0'
+  }))()`);
+  record(
+    'Security and keyboard-scroll metadata present',
+    hardening.csp && hardening.referrer === 'strict-origin-when-cross-origin' && hardening.codeRegions && hardening.tableRegion,
+    JSON.stringify(hardening)
+  );
+
+  await navigate('/404.html');
+  const notFound = await evaluate(`(() => ({
+    h1: document.querySelector('h1')?.innerText || '',
+    hasSkipLink: !!document.querySelector('.skip-link'),
+    overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth
+  }))()`);
+  record(
+    '404 page is styled, accessible, and overflow-free',
+    /signal/i.test(notFound.h1) && notFound.hasSkipLink && notFound.overflow <= 1,
+    JSON.stringify(notFound)
+  );
+
+  await setViewport(1440, 900);
+  await navigate('/');
+  const homeLinks = await evaluate(`Array.from(new Set(Array.from(document.querySelectorAll('a[href]'))
     .map((link) => link.getAttribute('href'))
     .filter((href) => href && !href.startsWith('#') && !/^(https?:|mailto:|tel:)/i.test(href))))`);
+  await navigate('/ask-onboarding.html');
+  const caseLinks = await evaluate(`Array.from(new Set(Array.from(document.querySelectorAll('a[href]'))
+    .map((link) => link.getAttribute('href'))
+    .filter((href) => href && !href.startsWith('#') && !/^(https?:|mailto:|tel:)/i.test(href))))`);
+  const localLinks = Array.from(new Set([...homeLinks, ...caseLinks]));
 
   const linkResults = [];
   for (const href of localLinks) {

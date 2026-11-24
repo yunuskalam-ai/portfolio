@@ -10,7 +10,7 @@ Featured project: **Ask Onboarding**, a local-first RAG assistant with exact cit
 
 ## Verification
 
-- **End-to-end:** 24 / 24 checks passed in headless Chrome at 1440, 1024, 768, and 390 widths.
+- **End-to-end:** 26 / 26 checks passed in headless Chrome at 1440, 1024, 768, and 390 widths.
 - **Static:** HTML nesting, local references, CSS delimiters, and JavaScript syntax verified.
 - **Accessibility:** skip link, named controls, unique IDs, keyboard focus, reduced motion, and contrast preferences.
 - **Source integrity:** SHA-256 checksums are recorded in `CHECKSUMS.txt`.
@@ -55,6 +55,7 @@ The runner starts a local static server and a headless Chromium browser, then ch
 | `site.webmanifest` | Web app manifest |
 | `sitemap.xml`, `robots.txt` | Search engine metadata |
 | `TESTING.md`, `CHECKSUMS.txt` | Verification record and source hashes |
+| `CHANGELOG.md`, `SECURITY.md`, `.editorconfig` | Release, security, and editor standards |
 
 ## Customize
 
@@ -80,6 +81,7 @@ The interface follows a product-led, editorial direction rather than a generic l
 - Semantic landmarks, a skip link, visible focus, named controls, and keyboard-operable navigation.
 - Light/dark themes with system preference detection and local persistence.
 - SEO metadata, Open Graph/Twitter cards, JSON-LD, sitemap, manifest, icons, and a styled 404.
+- Content Security Policy, referrer policy, and reduced-motion / high-contrast / forced-colors handling.
 - Relative asset URLs for GitHub Pages project sites and `.nojekyll` to bypass Jekyll.
 
 References used for the UI/UX and modern-web pass:
@@ -103,4 +105,8 @@ Ask Onboarding facts, commands, evaluation figures, and limitations are sourced 
 
 ## License
 
-The portfolio source is original. Third-party project content remains under its own license.
+The portfolio source is original and is released under the MIT License. See `LICENSE`.
+
+The featured project, Ask Onboarding, is also MIT licensed. Its license was verified from the [Ask Onboarding repository](https://github.com/yunuskalam-ai/ask-onboarding/blob/main/LICENSE).
+
+Third-party project content remains under its own license.

@@ -7,6 +7,9 @@
   <meta name="description" content="Case study of Ask Onboarding: a local-first RAG assistant with exact citations, honest refusals, help-desk tickets, testing, and evaluation results.">
   <meta name="author" content="Yunus Kalam">
   <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'">
   <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e0e0c" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://yunuskalam-ai.github.io/portfolio/ask-onboarding.html">
@@ -16,9 +19,14 @@
   <meta property="og:url" content="https://yunuskalam-ai.github.io/portfolio/ask-onboarding.html">
   <meta property="og:site_name" content="Yunus Kalam">
   <meta property="og:image" content="https://yunuskalam-ai.github.io/portfolio/og-image.png">
+  <meta property="og:image:secure_url" content="https://yunuskalam-ai.github.io/portfolio/og-image.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Ask Onboarding case study — Yunus Kalam.">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-11-24T18:00:00Z">
+  <meta property="article:modified_time" content="2026-11-24T19:00:00Z">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ask Onboarding — Case Study — Yunus Kalam">
   <meta name="twitter:description" content="A local-first RAG assistant with exact citations, honest refusals, and a help-desk fallback.">
@@ -151,7 +159,7 @@
               and the <code>qwen2.5:3b</code> model, so allow a few minutes and about 1.9 GB
               of disk space. The 18 sample documents load automatically.
             </p>
-            <pre class="code-block"><code>git clone https://github.com/yunuskalam-ai/ask-onboarding.git
+            <pre class="code-block" tabindex="0" role="region" aria-label="Shell commands"><code>git clone https://github.com/yunuskalam-ai/ask-onboarding.git
 cd ask-onboarding
 docker compose up</code></pre>
             <p>
@@ -159,7 +167,7 @@ docker compose up</code></pre>
               account, and ask a question on the Chat page. The API docs are available at
               <a href="http://localhost:8000/docs">http://localhost:8000/docs</a>.
             </p>
-            <div class="table-wrap">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Demo accounts and roles">
               <table class="role-table">
                 <caption>Demo accounts and server-enforced roles</caption>
                 <thead>
@@ -202,7 +210,7 @@ docker compose up</code></pre>
               checks, and the production build. The test suite has a 95% coverage floor.
               The repository includes negative and security tests alongside the happy paths.
             </p>
-            <pre class="code-block"><code># Backend tests
+            <pre class="code-block" tabindex="0" role="region" aria-label="Shell commands"><code># Backend tests
 docker compose exec api python -m pytest
 
 # Frontend tests
