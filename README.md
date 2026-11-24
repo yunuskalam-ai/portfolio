@@ -1,12 +1,23 @@
 # Yunus Kalam — AI & Full-Stack Portfolio
 
-An original, dependency-free portfolio for AI and technology projects. Built as a static site so it can be hosted directly on GitHub Pages with no build step.
+An original, dependency-free portfolio for AI and technology projects. It is a static site with no framework, no build step, no external fonts, and no tracking.
 
-Featured project: **Ask Onboarding**, a local-first RAG assistant with exact citations, honest refusals, help-desk tickets, and a documented evaluation. The full case study is in `ask-onboarding.html`.
+**Live site:** https://yunuskalam-ai.github.io/portfolio/<br>
+**Repository:** https://github.com/yunuskalam-ai/portfolio<br>
+**Case study:** https://yunuskalam-ai.github.io/portfolio/ask-onboarding.html
+
+Featured project: **Ask Onboarding**, a local-first RAG assistant with exact citations, honest refusals, help-desk tickets, role-based access, and a documented evaluation.
+
+## Verification
+
+- **End-to-end:** 24 / 24 checks passed in headless Chrome at 1440, 1024, 768, and 390 widths.
+- **Static:** HTML nesting, local references, CSS delimiters, and JavaScript syntax verified.
+- **Accessibility:** skip link, named controls, unique IDs, keyboard focus, reduced motion, and contrast preferences.
+- **Source integrity:** SHA-256 checksums are recorded in `CHECKSUMS.txt`.
+
+Full results and reproduction steps: `TESTING.md`.
 
 ## Run locally
-
-From this folder:
 
 ```powershell
 python -m http.server 8000
@@ -14,39 +25,36 @@ python -m http.server 8000
 
 Open `http://localhost:8000`.
 
-Alternatively, with Node.js:
+With Node.js:
 
 ```powershell
 npx serve .
 ```
 
-## Deploy to GitHub Pages
+## Test
 
-1. Replace every placeholder in `index.html` and `404.html`:
-   - `hello@yourdomain.com`
-   - `https://yourdomain.com/` in the canonical, Open Graph, and JSON-LD tags
-   - project names, descriptions, years, and technology tags
-2. Initialize the repository from this folder:
+```powershell
+node scripts/e2e.mjs
+```
 
-   ```powershell
-   git init
-   git add .
-   git commit -m "Add portfolio site"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
-   git push -u origin main
-   ```
+The runner starts a local static server and a headless Chromium browser, then checks responsive overflow, navigation, theme persistence, mobile menu ARIA state, copy-email, case-study rendering, local links, accessibility basics, reduced motion, and runtime exceptions. Set `CHROME_PATH` if the browser is not in a standard location.
 
-3. In the GitHub repository, open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Choose `main` and `/ (root)`, then save.
-6. Wait for the deployment to finish. The site will be available at:
+## Project structure
 
-   ```text
-   https://YOUR-USERNAME.github.io/YOUR-REPO/
-   ```
-
-All asset paths are relative, so the site works from a repository subpath as well as a custom domain.
+| Path | Purpose |
+| --- | --- |
+| `index.html` | Main portfolio page |
+| `ask-onboarding.html` | Project case study, instructions, QA, results, limitations, docs |
+| `404.html` | Styled not-found page |
+| `styles.css` | Design tokens, layout, components, responsive and accessibility states |
+| `script.js` | Theme, navigation, reveal, progress, copy-email |
+| `scripts/e2e.mjs` | Dependency-free end-to-end browser checks |
+| `assets/` | Social-card and icon sources |
+| `og-image.png` | 1200×630 social preview |
+| `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` | PWA and Apple icons |
+| `site.webmanifest` | Web app manifest |
+| `sitemap.xml`, `robots.txt` | Search engine metadata |
+| `TESTING.md`, `CHECKSUMS.txt` | Verification record and source hashes |
 
 ## Customize
 
@@ -56,29 +64,43 @@ All asset paths are relative, so the site works from a repository subpath as wel
 | Ask Onboarding case study, instructions, QA, results | `ask-onboarding.html` |
 | Colors, type scale, spacing, motion | `styles.css` — design tokens at the top |
 | Theme, menu, reveal, copy-email behavior | `script.js` |
-| Browser icon | `favicon.svg` |
+| Social preview | `assets/og-card.html` → `og-image.png` |
+| Icons | `assets/icon-source.svg` → PNG exports |
 | PWA metadata | `site.webmanifest` |
-| Search engine rules | `robots.txt` |
+| Search engine rules | `robots.txt`, `sitemap.xml` |
 
-The featured project links to its GitHub repository, live project page, and the local case study. Add more project cards as new public work is published.
+## Design and engineering principles
 
-## Design and engineering notes
+The interface follows a product-led, editorial direction rather than a generic landing-page template:
 
-- Original visual system: warm paper, ink, signal orange, editorial serif, technical mono labels.
-- No frameworks, trackers, external fonts, or image dependencies.
-- Responsive from 320px upward with a dedicated mobile navigation state.
-- Semantic landmarks, skip link, visible focus states, and keyboard-operable controls.
-- Light/dark theme with system preference detection and local persistence.
-- Motion is decorative and disabled under `prefers-reduced-motion`.
-- SEO metadata, Open Graph tags, JSON-LD, favicon, manifest, and a styled 404 page.
-- Relative asset URLs for GitHub Pages project sites.
-- `.nojekyll` prevents Jekyll from processing the folder.
+- One clear idea per screen, with equal content edges and a fixed-feeling navigation bar.
+- Real product UI in the featured project: a cited answer beside its source document.
+- Quiet micro-interactions, a hero entrance, and motion that is disabled under `prefers-reduced-motion`.
+- Modern platform CSS: `color-mix()`, `text-wrap: pretty`, stable scrollbar gutter, `accent-color`, logical focus states, and `prefers-contrast` / `forced-colors` handling.
+- Semantic landmarks, a skip link, visible focus, named controls, and keyboard-operable navigation.
+- Light/dark themes with system preference detection and local persistence.
+- SEO metadata, Open Graph/Twitter cards, JSON-LD, sitemap, manifest, icons, and a styled 404.
+- Relative asset URLs for GitHub Pages project sites and `.nojekyll` to bypass Jekyll.
 
-## Before launch checklist
+References used for the UI/UX and modern-web pass:
 
-- [ ] Replace all placeholder identity and contact details.
-- [ ] Add more projects and case studies as new public work is published.
-- [ ] Add a real social preview image and update the Open Graph image tag if desired.
-- [ ] Add a `sitemap.xml` once the final domain is known.
-- [ ] Test keyboard navigation, mobile menu, theme persistence, and reduced motion.
-- [ ] Run a final accessibility and performance pass in Lighthouse.
+- [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)
+- [GoogleChrome/modern-web-guidance-src](https://github.com/GoogleChrome/modern-web-guidance-src)
+
+## Deployment
+
+The site is deployed from `main` at the repository root using GitHub Pages.
+
+1. Push changes to `main`.
+2. GitHub Pages builds from the branch root.
+3. The site is served at `https://yunuskalam-ai.github.io/portfolio/`.
+
+To use a custom domain, add a `CNAME` file and update the canonical, Open Graph, JSON-LD, sitemap, and robots URLs.
+
+## Content note
+
+Ask Onboarding facts, commands, evaluation figures, and limitations are sourced from the public [Ask Onboarding repository](https://github.com/yunuskalam-ai/ask-onboarding). The project is MIT licensed.
+
+## License
+
+The portfolio source is original. Third-party project content remains under its own license.

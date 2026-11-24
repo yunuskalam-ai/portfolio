@@ -85,6 +85,12 @@
       if (event.target.closest('a')) closeMenu();
     });
 
+    document.addEventListener('click', function (event) {
+      if (menuToggle.getAttribute('aria-expanded') !== 'true') return;
+      if (primaryNav.contains(event.target) || menuToggle.contains(event.target)) return;
+      closeMenu();
+    });
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') closeMenu();
     });
