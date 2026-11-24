@@ -1,0 +1,17 @@
+{
+  "name": "Yunus Kalam — AI & Full-Stack Engineer",
+  "short_name": "Yunus Kalam",
+  "description": "AI systems, human interfaces, and real outcomes.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#161614",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

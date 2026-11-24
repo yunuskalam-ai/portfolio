@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Yunus Kalam monogram">
+  <rect width="64" height="64" rx="14" fill="#161614"/>
+  <circle cx="32" cy="32" r="18" fill="none" stroke="#f3f0e8" stroke-width="1.5" opacity=".55"/>
+  <circle cx="32" cy="32" r="11" fill="none" stroke="#ff5a36" stroke-width="1.5"/>
+  <path d="M12 20l8 12 8-12M20 32v12M38 20v24M38 32l12-12M38 32l12 12" fill="none" stroke="#f3f0e8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32" cy="12" r="3.5" fill="#ff5a36"/>
+</svg>
